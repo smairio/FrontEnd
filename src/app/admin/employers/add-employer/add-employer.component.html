@@ -1,0 +1,73 @@
+<div mat-dialog-title>
+    <h1>{{data ? 'Update Employer' : 'Add Employer'}}</h1>
+</div>
+
+<form [formGroup]="employerForm" (ngSubmit)="onFormSubmit()">
+<div mat-dialog-content class="content">
+    <div class="row">
+        <mat-form-field class="row-field" appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput type="text" placeholder="Ex. Jhondoe2023" formControlName="username">
+            <mat-error *ngIf="employerForm.value.username">Only alphanumeric.</mat-error>
+        </mat-form-field>
+        <mat-form-field class="row-field" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" placeholder="Ex. JhonDoe@example.com" formControlName="email">
+            <mat-error *ngIf="employerForm.value.email">Invalid Email.</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="row" *ngIf="!data">
+        <mat-form-field class="row-field" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" placeholder="Ex. Jhon" formControlName="password">
+            <mat-error *ngIf="employerForm.value.password">Min length 8.</mat-error>
+
+        </mat-form-field>
+        <mat-form-field class="row-field" appearance="outline">
+            <mat-label>Confirm password</mat-label>
+            <input matInput type="Password" placeholder="Ex. Doe" formControlName="confirm_password">
+            <mat-error class="row-gender" *ngIf="employerForm.value.confirm_password">Password Does not match.</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field class="row-field" appearance="outline">
+            <mat-label>First name</mat-label>
+            <input matInput type="text" placeholder="Ex. Jhon" formControlName="firstname">
+            <mat-error *ngIf="employerForm.value.first_name">Only alphabet.</mat-error>
+
+        </mat-form-field>
+        <mat-form-field class="row-field" appearance="outline">
+            <mat-label>Last name</mat-label>
+            <input matInput type="text" placeholder="Ex. Doe" formControlName="lastname">
+            <mat-error *ngIf="employerForm.value.last_name">Only alphabet.</mat-error>
+        </mat-form-field>
+    </div>
+
+
+    <div class="row">
+        <mat-form-field class="row-field" appearance="outline">
+            <mat-label>Phone number</mat-label>
+            <input matInput type="text" placeholder="Ex. 50555000" formControlName="phone_number">
+            <mat-error *ngIf="employerForm.value.phone_number">Phone must be 8 digits.</mat-error>
+        </mat-form-field>
+        <mat-form-field class="row-field" appearance="outline">
+            <mat-label>Address</mat-label>
+            <input matInput type="text" placeholder="Al Madina" formControlName="address">
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="row-gender">
+    <mat-radio-group class="row-field" aria-label="Select an option" formControlName="role">
+      <mat-label><b>Role</b></mat-label>
+      <mat-radio-button value="MANAGER">Manager</mat-radio-button>
+      <mat-radio-button value="EMPLOYER">Employer</mat-radio-button>
+    </mat-radio-group>
+    <mat-error class="row-gender" *ngIf="role.errors?.['required'] && ( submitted)">Choose a role!.</mat-error>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="primary" type="submit">{{data ? 'update' : 'Save'}}</button>
+</div>

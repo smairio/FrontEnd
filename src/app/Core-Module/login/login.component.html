@@ -1,0 +1,26 @@
+<head>
+  <meta charset="utf-8">
+  <title>Animated</title>
+</head>
+<body style="margin:0;padding:0">
+  <div class="center">
+    <h1>Login</h1>
+
+    <form name="form" (ngSubmit)="login()" #f="ngForm">
+      <div class="txt_field">
+        <input type="text" name="username" [(ngModel)]="model.username" #username="ngModel" required>
+        <span></span>
+        <label>Username</label>
+      </div>
+      <div class="txt_field">
+        <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required>
+        <span></span>
+        <label>Password</label>
+      </div>
+      <div class="pass">Forgot Password?</div>
+      <input type="submit" value="Login">
+    </form>
+
+  </div>
+
+</body>
