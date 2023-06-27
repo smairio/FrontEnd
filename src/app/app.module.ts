@@ -16,6 +16,14 @@ import {MatInputModule} from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatSelectModule} from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
+
+
 
 
 
@@ -34,7 +42,7 @@ import { RequestInterceptor } from './request-interceptor/request.interceptor';
     AppComponent,
     LoginComponent,
     NotFountComponent,
-    
+
   ],
   imports: [
     HttpClientModule,
@@ -52,8 +60,12 @@ import { RequestInterceptor } from './request-interceptor/request.interceptor';
     FlexLayoutModule,
     MatSelectModule,
     MatOptionModule,
-    MatSnackBarModule
-    
+    MatSnackBarModule,
+    MatDividerModule,
+    MatProgressBarModule,
+    MatSlideToggleModule,
+    MatTableModule,
+    MatMenuModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS , useClass:RequestInterceptor , multi:true}],
   bootstrap: [AppComponent]

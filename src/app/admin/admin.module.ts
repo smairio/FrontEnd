@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmployersComponent } from './employers/employers.component';
 import { ClientsComponent } from './clients/clients.component';
 
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -28,6 +29,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 import { AddEmployerComponent } from './employers/add-employer/add-employer.component';
 import { ErrorComponentComponent } from './error-component/error-component.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { AddProjectComponent } from './projects/add-project/add-project.component';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 
 
@@ -40,6 +45,8 @@ import { ErrorComponentComponent } from './error-component/error-component.compo
     DeleteConfirmationComponent,
     AddEmployerComponent,
     ErrorComponentComponent,
+    ProjectsComponent,
+    AddProjectComponent,
   ],
   imports: [
     CommonModule,
@@ -51,21 +58,23 @@ import { ErrorComponentComponent } from './error-component/error-component.compo
     MatFormFieldModule,
     MatCardModule,
     MatInputModule,
+    MatDatepickerModule,
     FlexLayoutModule,
     MatSelectModule,
     MatListModule,
     MatGridListModule,
     MatDialogModule,
     ReactiveFormsModule,
+    MatNativeDateModule,
     MatRadioModule,
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
     MatIconModule,
     MatSnackBarModule,
-    
-    
-    
+
+
+
   ]
 })
 export class AdminModule { }

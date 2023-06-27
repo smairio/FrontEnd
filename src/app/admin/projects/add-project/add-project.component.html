@@ -1,0 +1,79 @@
+<div mat-dialog-title>
+    <h1>{{data ? 'Update Project' : 'Add Project'}}</h1>
+</div>
+
+<form [formGroup]="projectForm" (ngSubmit)="onFormSubmit()">
+<div mat-dialog-content class="content">
+    <div class="row">
+        <mat-form-field class="row-field" appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput type="text" placeholder="Ex. Project0" formControlName="title">
+            <!-- <mat-error *ngIf="clientForm.value.company_name">Only alphanumeric.</mat-error> -->
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Client</mat-label>
+            <select matNativeControl required formControlName="client">
+              <option value="" disabled selected>Select a client</option>
+              <option *ngFor="let client of clients" [value]="client.id">{{ client.companyname }}</option>
+            </select>
+          </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field appearance="fill">
+            <mat-label>Service</mat-label>
+                <select matNativeControl required formControlName="service">
+                    <option value="WEB_AUDITING">Web auditing</option>
+                    <option value="WEB_MAINTENANCE">Web maintenance</option>
+                    <option value="WEB_CREATION">Web creation</option>
+                </select>
+            <!-- <mat-error *ngIf="clientForm.value.email">Invalid Email.</mat-error> -->
+
+        </mat-form-field>
+        <mat-form-field class="row-field" appearance="outline">
+            <mat-label>Web Site</mat-label>
+            <input matInput type="text" placeholder="www.example.com" formControlName="website">
+            <!-- <mat-error *ngIf="clientForm.value.last_name">Only alphabet.</mat-error> -->
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field class="row-field" appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput type="text" placeholder="Description" formControlName="description">
+            <!-- <mat-error *ngIf="clientForm.value.phone_number">Phone must be 8 digits.</mat-error> -->
+
+        </mat-form-field>
+        <mat-form-field class="row-field" appearance="outline">
+            <mat-label>Status</mat-label>
+            <select matNativeControl required formControlName="status">
+                <option value="NOT_STARTED">Not started</option>
+                <option value="IN_PROGRESS">In progress</option>
+                <option value="COMPLETED">Completed</option>
+                <option value="CANCELED">Canceled</option>
+            </select>
+            <!-- <mat-error *ngIf="clientForm.value.fax">Fax must be 8 digits.</mat-error> -->
+
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Second campaign</mat-label>
+            <mat-date-range-input
+              [formGroup]="projectForm"
+              [rangePicker]="campaignTwoPicker"
+              [comparisonStart]="projectForm.value.start"
+              [comparisonEnd]="projectForm.value.end">
+              <input matStartDate placeholder="Start date" formControlName="start_date">
+              <input matEndDate placeholder="End date" formControlName="end_date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matIconSuffix [for]="campaignTwoPicker"></mat-datepicker-toggle>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-date-range-picker #campaignTwoPicker></mat-date-range-picker>
+          </mat-form-field>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="primary" type="submit">{{data ? 'update' : 'Save'}}</button>
+</div>
